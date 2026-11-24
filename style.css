@@ -1,0 +1,164 @@
+* {
+  box-sizing: border-box;
+}
+
+:root {
+  color-scheme: light dark;
+  --paper: #f3f7f8;
+  --panel: #fff;
+  --text: #183340;
+  --muted: #48616f;
+  --line: #cedce1;
+  --link: #005e70;
+  --masthead: #103543;
+  --masthead-text: #fff;
+  --selection: #bdebf0;
+  --selection-text: #123541;
+  font: 100%/1.65 system-ui, sans-serif;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --paper: #0f1d23;
+    --panel: #15272e;
+    --text: #e9f3f6;
+    --muted: #bbced5;
+    --line: #39535d;
+    --link: #94e2eb;
+    --masthead: #153844;
+  }
+}
+
+body {
+  margin: 0;
+  background: var(--paper);
+  color: var(--text);
+}
+
+.wrap {
+  width: min(100% - 2rem, 52rem);
+  margin-inline: auto;
+}
+
+.masthead {
+  background: var(--masthead);
+  color: var(--masthead-text);
+  padding-block: clamp(1.75rem, 6vw, 4rem) 1.5rem;
+}
+
+.brand {
+  font-weight: 700;
+  letter-spacing: .025em;
+}
+
+h1 {
+  font-size: clamp(1.75rem, 6vw, 3.5rem);
+  letter-spacing: -.035em;
+  line-height: 1.12;
+  margin: .35em 0 .25em;
+  overflow-wrap: anywhere;
+}
+
+.date {
+  margin: 0 0 1.25rem;
+}
+
+nav ul {
+  display: flex;
+  flex-wrap: wrap;
+  gap: .45rem;
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+nav a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 2.75rem;
+  padding: .35rem .8rem;
+  border: 1px solid #85aebc;
+  border-radius: .5rem;
+  color: inherit;
+}
+
+nav a[aria-current="page"] {
+  background: var(--selection);
+  color: var(--selection-text);
+  border-color: var(--selection);
+  font-weight: 700;
+}
+
+a {
+  color: var(--link);
+  text-underline-offset: .18em;
+  overflow-wrap: anywhere;
+}
+
+a:focus-visible {
+  outline: 2px solid currentColor;
+  outline-offset: 3px;
+}
+
+main {
+  padding-block: 1.5rem 3rem;
+}
+
+article {
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: .8rem;
+  padding-inline: clamp(1rem, 5vw, 3rem);
+}
+
+section {
+  padding-block: 1.35rem;
+}
+
+section + section {
+  border-top: 1px solid var(--line);
+}
+
+h2 {
+  margin: 0 0 .55rem;
+  font-size: clamp(1.25rem, 3vw, 1.55rem);
+  line-height: 1.3;
+}
+
+p {
+  margin: 0;
+}
+
+p + p {
+  margin-top: .85rem;
+}
+
+@media print {
+  :root {
+    color-scheme: light;
+    --text: #000;
+    --panel: #fff;
+    --paper: #fff;
+    --masthead: #fff;
+    --masthead-text: #000;
+  }
+
+  .wrap {
+    width: 100%;
+  }
+
+  .masthead,
+  main,
+  article {
+    padding: 0;
+    border: 0;
+  }
+
+  nav {
+    display: none;
+  }
+
+  h2 {
+    break-after: avoid;
+  }
+}
